@@ -40,7 +40,7 @@ A professional, visually stunning, all-in-one productivity and media hub designe
 ### Installation
 1. **Clone the repository**
    ```bash
-   git clone [https://github.com/yourusername/nexus-portal-pro.git](https://github.com/yourusername/nexus-portal-pro.git)
+   git clone [https://github.com/Mansisingh-b/nexus-portal-pro.git](https://github.com/Mansisingh-b/nexus-portal-pro.git)
 
  
 **Would you like me to help you set up GitHub Actions so your portal updates automatically whenever you push code?**
