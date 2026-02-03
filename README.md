@@ -44,3 +44,31 @@ A professional, visually stunning, all-in-one productivity and media hub designe
 
  
 **Would you like me to help you set up GitHub Actions so your portal updates automatically whenever you push code?**
+
+-------
+
+## 📂 File Structure
+
+### nexus-portal/
+
+    ├── index.html           # Main  application and UI logic
+    |
+    ├── assets/              # Icons and branded images
+    |
+    ├── README.md            # This documentation
+    |
+----
+
+## 🛠️ Structure Banane ka Sahi Tarika
+
+Main File (index.html): Isme aapka sidebar aur main sections (jaise Academic Resources, Development & Tools) honge.
+
+Separate CSS: Style ko hamesha ek alag .css file me rakhein. Isse code saaf rehta hai aur Liquid Cosmos wale gradients manage karna asan hota hai.
+
+Assets Folder: Saari images aur custom icons ko assets/ folder me daalein taaki root folder messy na dikhe.
+
+Data Management: Agar aapke paas bahut saare links hain (jaise W3Schools tutorials), toh aap unhe ek data.js file me array banakar rakh sakte hain aur JS se render kar sakte hain.
+
+---
+
+
