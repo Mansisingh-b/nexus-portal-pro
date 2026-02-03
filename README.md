@@ -42,52 +42,5 @@ A professional, visually stunning, all-in-one productivity and media hub designe
    ```bash
    git clone [https://github.com/yourusername/nexus-portal-pro.git](https://github.com/yourusername/nexus-portal-pro.git)
 
-   📂 File Structure
-Plaintext
-nexus-portal/
-├── index.html          # Main application and UI logic
-├── assets/             # Icons and branded images
-└── README.md           # This documentation
-
-🔧 Technical Details
-Frontend: HTML5 (Semantic), CSS3 (Flexbox/Grid), JavaScript (ES6+)
-
-Icons: Font Awesome 6.5.1
-
-Fonts: Google Fonts (Inter/Segoe UI)
-
-Storage: Web Storage API (LocalStorage)
-
-🎨 Customization
-You can easily add your own links by editing the index.html file. Each card uses a simple structure:
-
-HTML
-<div class="track-card">
-    <img src="your-image-url" alt="Service Name">
-    <div class="card-title">Your Service</div>
-</div>
-🤝 Contributing
-Suggestions are welcome!
-
-Fork the repository.
-
-Create a feature branch.
-
-Submit a pull request.
-
-📄 License
-This project is open-source and available under the MIT License.
-
-🎉 Built by Devs for Devs.
-Enjoy your new workspace!
-
-
----
-
-### **How to use this:**
-1.  Go to your GitHub repository.
-2.  Click **Add file** > **Create new file**.
-3.  Name it `README.md`.
-4.  Paste the content above and click **Commit changes**.
-
+ 
 **Would you like me to help you set up GitHub Actions so your portal updates automatically whenever you push code?**
