@@ -3,191 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aether Music | Liquid Cosmos</title>
+    <title>Nexus Hub | Pro Downloader</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --purple: #8b5cf6; --pink: #ec4899; --cyan: #06b6d4;
-            --blue: #3b82f6; --bg: #020617; --glass: rgba(255, 255, 255, 0.03);
+            --bg: #030712;
+            --sidebar: #0f172a;
+            --accent: #8b5cf6;
+            --glass: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.1);
+            --text: #f3f4f6;
+            --text-dim: #94a3b8;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', sans-serif;
+            margin: 0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
             background: var(--bg);
-            color: white;
-            overflow: hidden;
-            height: 100vh;
+            color: var(--text);
             display: flex;
+            height: 100vh;
+            overflow: hidden;
         }
 
-        /* --- Liquid Cosmos Animated Background --- */
-        .cosmos-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: radial-gradient(circle at 20% 30%, #1e1b4b 0%, transparent 40%),
-                        radial-gradient(circle at 80% 70%, #312e81 0%, transparent 40%);
-            filter: blur(80px);
-            animation: drift 20s infinite alternate;
-        }
-
-        @keyframes drift {
-            from { transform: scale(1); }
-            to { transform: scale(1.2) rotate(5deg); }
-        }
-
-        /* --- Sidebar Navigation --- */
+        /* Sidebar - Styled like your Screenshot */
         nav {
-            width: 280px; background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(20px); border-right: 1px solid var(--border);
-            display: flex; flex-direction: column; padding: 30px 20px;
+            width: 260px;
+            background: var(--sidebar);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 25px 15px;
+            gap: 10px;
         }
 
         .logo {
-            font-size: 1.8rem; font-weight: 800; margin-bottom: 40px;
-            background: linear-gradient(to right, var(--cyan), var(--purple));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
+            padding-left: 10px;
         }
 
-        .nav-section { margin-bottom: 30px; }
-        .nav-label { color: #64748b; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
-        
         .nav-link {
-            display: flex; align-items: center; gap: 12px; padding: 12px;
-            color: #94a3b8; text-decoration: none; border-radius: 12px; transition: 0.3s;
+            padding: 12px 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: 0.3s;
         }
 
-        .nav-link:hover, .nav-link.active { background: var(--glass); color: white; border: 1px solid var(--border); }
-
-        /* --- Main Content --- */
-        main { flex: 1; overflow-y: auto; padding: 40px; padding-bottom: 120px; }
-
-        .search-bar {
-            background: var(--glass); border: 1px solid var(--border);
-            padding: 12px 20px; border-radius: 30px; width: 100%; max-width: 500px;
-            color: white; outline: none; margin-bottom: 40px;
+        .nav-link.active {
+            background: var(--glass);
+            color: white;
+            border: 1px solid var(--border);
         }
 
-        .mood-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px; margin-bottom: 40px;
+        /* Content Area */
+        main {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+            background: radial-gradient(circle at top right, #1e1b4b, transparent);
         }
 
-        .track-card {
-            background: var(--glass); border: 1px solid var(--border);
-            border-radius: 20px; padding: 15px; transition: 0.3s; cursor: pointer;
+        .hero { text-align: center; margin-bottom: 40px; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+
+        .control-panel {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .track-card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.07); border-color: var(--cyan); }
-        .track-card img { width: 100%; aspect-ratio: 1/1; border-radius: 15px; margin-bottom: 15px; }
-
-        /* --- Floating Sticky Player --- */
-        .player-bar {
-            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            width: 95%; max-width: 1200px;
-            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(25px);
-            border: 1px solid var(--border); border-radius: 24px;
-            padding: 15px 30px; display: flex; align-items: center; justify-content: space-between;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        .input-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
         }
 
-        .current-track { display: flex; align-items: center; gap: 15px; width: 300px; }
-        .current-track img { width: 50px; height: 50px; border-radius: 10px; }
+        input {
+            flex: 1;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 14px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
 
-        .controls { display: flex; flex-direction: column; align-items: center; gap: 10px; flex: 1; }
-        .main-btns { display: flex; align-items: center; gap: 25px; font-size: 1.2rem; }
-        .play-btn { width: 45px; height: 45px; background: white; color: black; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; }
+        input:focus { border-color: var(--accent); }
 
-        .progress-container { width: 100%; max-width: 500px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; position: relative; }
-        .progress-bar { height: 100%; background: var(--cyan); border-radius: 2px; width: 45%; }
+        .btn {
+            padding: 12px 25px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+        }
+
+        .btn-main { background: var(--accent); color: white; }
+        .btn-alt { background: #1e293b; color: white; border: 1px solid var(--border); }
+        .btn:hover { transform: translateY(-2px); filter: brightness(1.2); }
+
+        /* Video Section */
+        #player-container {
+            display: none;
+            margin: 40px auto;
+            max-width: 800px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #000;
+        }
+
+        .iframe-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
+        .iframe-wrapper iframe { position: absolute; top:0; left:0; width:100%; height:100%; }
+
+        .error-fix-bar {
+            background: #1e293b;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        /* Library Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; cursor: pointer; }
+        .card-body { padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+        
+        .trash-btn { background: none; border: none; color: #f87171; cursor: pointer; font-size: 1.1rem; }
     </style>
 </head>
 <body>
 
-    <div class="cosmos-bg"></div>
-
     <nav>
-        <div class="logo">Aether Music</div>
-        
-        <div class="nav-section">
-            <div class="nav-label">Moods</div>
-            <a href="#" class="nav-link active" onclick="filterMood('all')"><i class="fa-solid fa- nebula"></i> All Tracks</a>
-            <a href="#" class="nav-link" onclick="filterMood('happy')"><i class="fa-solid fa-sun"></i> Happy</a>
-            <a href="#" class="nav-link" onclick="filterMood('lofi')"><i class="fa-solid fa-moon"></i> Lofi / Chill</a>
-            <a href="#" class="nav-link" onclick="filterMood('study')"><i class="fa-solid fa-book"></i> Study</a>
-            <a href="#" class="nav-link" onclick="filterMood('sleep')"><i class="fa-solid fa-bed"></i> Sleep</a>
-        </div>
+        <div class="logo">NEXUS HUB</div>
+        <a href="#" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a>
     </nav>
 
     <main>
-        <input type="text" class="search-bar" placeholder="Search by title, artist, or mood...">
-        
-        <h2 id="section-title">Discover Cosmic Melodies</h2>
-        <div class="mood-grid" id="music-container">
+        <div class="hero">
+            <h1>Media Portal</h1>
+            <p style="color: var(--text-dim);">Download and save your favorite videos instantly.</p>
+        </div>
+
+        <div class="control-panel">
+            <div class="input-row">
+                <input type="text" id="urlInput" placeholder="Paste YouTube link here...">
+                <button class="btn btn-main" onclick="playVideo()"><i class="fa-solid fa-play"></i> Play</button>
+                <button class="btn btn-alt" onclick="downloadVideo()"><i class="fa-solid fa-download"></i> Download</button>
             </div>
+            <button class="btn btn-alt" style="width: 100%; justify-content: center;" onclick="saveVideo()">
+                <i class="fa-solid fa-plus"></i> Add to My Library
+            </button>
+        </div>
+
+        <div id="player-container">
+            <div class="error-fix-bar">
+                <span>If video shows "Error 153", click the Fix button ➔</span>
+                <button class="btn btn-main" style="padding: 5px 15px; font-size: 0.8rem;" id="fixBtn">External Fix</button>
+            </div>
+            <div class="iframe-wrapper">
+                <iframe id="mainIframe" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 50px;">Saved Collection</h2>
+        <div id="libraryGrid" class="grid"></div>
     </main>
 
-    <div class="player-bar">
-        <div class="current-track">
-            <img id="player-img" src="https://via.placeholder.com/50" alt="">
-            <div>
-                <div id="player-title" style="font-weight: 700; font-size: 0.9rem;">Select a Track</div>
-                <div id="player-artist" style="color: #94a3b8; font-size: 0.75rem;">Aether Artist</div>
-            </div>
-        </div>
-
-        <div class="controls">
-            <div class="main-btns">
-                <i class="fa-solid fa-backward-step" style="cursor:pointer"></i>
-                <div class="play-btn" id="masterPlay"><i class="fa-solid fa-play"></i></div>
-                <i class="fa-solid fa-forward-step" style="cursor:pointer"></i>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar"></div>
-            </div>
-        </div>
-
-        <div style="width: 300px; text-align: right;">
-            <i class="fa-solid fa-volume-high"></i>
-        </div>
-    </div>
-
     <script>
-        const musicData = [
-            { id: 1, title: "Nebula Dreams", artist: "Stellar", mood: "lofi", cover: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=300" },
-            { id: 2, title: "Solar Pulse", artist: "Orbit", mood: "happy", cover: "https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=300" },
-            { id: 3, title: "Deep Focus", artist: "Zenith", mood: "study", cover: "https://images.unsplash.com/photo-1459749411177-042180ce673c?w=300" },
-            { id: 4, title: "Midnight Void", artist: "Luna", mood: "sleep", cover: "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=300" }
-        ];
+        // Start-up: Load data from permanent Local Storage
+        window.onload = renderLibrary;
 
-        function renderMusic(data) {
-            const container = document.getElementById('music-container');
-            container.innerHTML = data.map(track => `
-                <div class="track-card" onclick="playTrack('${track.title}', '${track.artist}', '${track.cover}')">
-                    <img src="${track.cover}" alt="">
-                    <div style="font-weight:700">${track.title}</div>
-                    <div style="color:#94a3b8; font-size:0.8rem">${track.artist}</div>
-                </div>
-            `).join('');
+        function getID(url) {
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = url.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : null;
         }
 
-        function filterMood(mood) {
-            const filtered = mood === 'all' ? musicData : musicData.filter(t => t.mood === mood);
-            renderMusic(filtered);
-            document.getElementById('section-title').innerText = mood.charAt(0).toUpperCase() + mood.slice(1) + " Mood";
+        function playVideo() {
+            const val = document.getElementById('urlInput').value;
+            const id = getID(val);
+            
+            if (id) {
+                const container = document.getElementById('player-container');
+                const iframe = document.getElementById('mainIframe');
+                
+                // Using 'nocookie' version for better success rates
+                iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1`;
+                container.style.display = "block";
+                
+                // Setup Fix Button
+                document.getElementById('fixBtn').onclick = () => window.open(`https://www.youtube.com/watch?v=${id}`, '_blank');
+                
+                container.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert("Please paste a valid English YouTube link.");
+            }
         }
 
-        function playTrack(title, artist, cover) {
-            document.getElementById('player-title').innerText = title;
-            document.getElementById('player-artist').innerText = artist;
-            document.getElementById('player-img').src = cover;
-            document.getElementById('masterPlay').innerHTML = '<i class="fa-solid fa-pause"></i>';
+        function downloadVideo() {
+            const val = document.getElementById('urlInput').value;
+            if (val) {
+                window.open(`https://en.savefrom.net/1-youtube-video-downloader-384.html?url=${encodeURIComponent(val)}`, '_blank');
+            }
         }
 
-        // Initial Load
-        renderMusic(musicData);
+        // PERMANENT STORAGE FIX
+        function saveVideo() {
+            const val = document.getElementById('urlInput').value;
+            const id = getID(val);
+            
+            if (id) {
+                let db = JSON.parse(localStorage.getItem('nexus_library_v3')) || [];
+                if (!db.includes(id)) {
+                    db.push(id);
+                    localStorage.setItem('nexus_library_v3', JSON.stringify(db));
+                    renderLibrary();
+                    alert("Added to Library!");
+                } else {
+                    alert("Already exists in your collection.");
+                }
+            }
+        }
+
+        function renderLibrary() {
+            const grid = document.getElementById('libraryGrid');
+            const db = JSON.parse(localStorage.getItem('nexus_library_v3')) || [];
+            
+            grid.innerHTML = "";
+            db.forEach(id => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="https://img.youtube.com/vi/${id}/mqdefault.jpg" onclick="quickPlay('${id}')">
+                    <div class="card-body">
+                        <strong>Video ID: ${id}</strong>
+                        <button class="trash-btn" onclick="deleteItem('${id}')"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function quickPlay(id) {
+            document.getElementById('urlInput').value = `https://www.youtube.com/watch?v=${id}`;
+            playVideo();
+        }
+
+        function deleteItem(id) {
+            let db = JSON.parse(localStorage.getItem('nexus_library_v3')) || [];
+            db = db.filter(i => i !== id);
+            localStorage.setItem('nexus_library_v3', JSON.stringify(db));
+            renderLibrary();
+        }
     </script>
 </body>
 </html>
